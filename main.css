@@ -1,0 +1,90 @@
+body {
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper {
+    width: 500px;
+    height: 500px;
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    font-size: xxx-large;
+    width: 125px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell1 {
+    order: 1;
+}
+
+.cell2 {
+    order: 2;
+}
+
+.cell3 {
+    order: 3;
+}
+
+.cell4 {
+    order: 4;
+}
+
+.cell5 {
+    order: 5;
+}
+
+.cell6 {
+    order: 6;
+}
+
+.cell7 {
+    order: 7;
+}
+
+.cell8 {
+    order: 8;
+}
+
+.cell9 {
+    order: 9;
+}
+
+.cell10 {
+    order: 10;
+}
+
+.cell11 {
+    order: 11;
+}
+
+.cell12 {
+    order: 12;
+}
+
+.cell13 {
+    order: 13;
+}
+
+.cell14 {
+    order: 14;
+}
+
+.cell15 {
+    order: 15;
+}
+
+.cell16 {
+    order: 16;
+}
+
+.unoccupied {
+    opacity: 0;
+}

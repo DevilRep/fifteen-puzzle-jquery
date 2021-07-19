@@ -6,148 +6,106 @@
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link rel="stylesheet" href="/main.css">
 </head>
-<style>
-    body {
-        height: 800px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .wrapper {
-        width: 500px;
-        height: 500px;
-        background-color: green;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .cell {
-        font-size: xxx-large;
-        width: 125px;
-        background-color: orange;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .cell1 {
-        order: 1;
-    }
-
-    .cell2 {
-        order: 2;
-    }
-
-    .cell3 {
-        order: 3;
-    }
-
-    .cell4 {
-        order: 4;
-    }
-
-    .cell5 {
-        order: 5;
-    }
-
-    .cell6 {
-        order: 6;
-    }
-
-    .cell7 {
-        order: 7;
-    }
-
-    .cell8 {
-        order: 8;
-    }
-
-    .cell9 {
-        order: 9;
-    }
-
-    .cell10 {
-        order: 10;
-    }
-
-    .cell11 {
-        order: 11;
-    }
-
-    .cell12 {
-        order: 12;
-    }
-
-    .cell13 {
-        order: 13;
-    }
-
-    .cell14 {
-        order: 14;
-    }
-
-    .cell15 {
-        order: 15;
-    }
-
-    .cell16 {
-        order: 16;
-    }
-
-    .zero {
-        opacity: 0;
-    }
-</style>
 <body>
 <div class="wrapper">
-    <div class="cell animate__animated cell1">
+    <div class="cell animate__animated cell1" data-index="1">
         <div class="text">1</div>
     </div>
-    <div class="cell animate__animated cell2">
+    <div class="cell animate__animated cell2" data-index="2">
         <div class="text">2</div>
     </div>
-    <div class="cell animate__animated cell3">
+    <div class="cell animate__animated cell3" data-index="3">
         <div class="text">3</div>
     </div>
-    <div class="cell animate__animated cell4">
+    <div class="cell animate__animated cell4" data-index="4">
         <div class="text">4</div>
     </div>
-    <div class="cell animate__animated cell5">
+    <div class="cell animate__animated cell5" data-index="5">
         <div class="text">5</div>
     </div>
-    <div class="cell animate__animated cell6">
+    <div class="cell animate__animated cell6" data-index="6">
         <div class="text">6</div>
     </div>
-    <div class="cell animate__animated cell7">
+    <div class="cell animate__animated cell7" data-index="7">
         <div class="text">7</div>
     </div>
-    <div class="cell animate__animated cell8">
+    <div class="cell animate__animated cell8" data-index="8">
         <div class="text">8</div>
     </div>
-    <div class="cell animate__animated cell9">
+    <div class="cell animate__animated cell9" data-index="9">
         <div class="text">9</div>
     </div>
-    <div class="cell animate__animated cell10">
+    <div class="cell animate__animated cell10" data-index="10">
         <div class="text">10</div>
     </div>
-    <div class="cell animate__animated cell11">
+    <div class="cell animate__animated cell11" data-index="11">
         <div class="text">11</div>
     </div>
-    <div class="cell animate__animated cell12">
+    <div class="cell animate__animated cell12" data-index="12">
         <div class="text">12</div>
     </div>
-    <div class="cell animate__animated cell13">
+    <div class="cell animate__animated cell13" data-index="13">
         <div class="text">13</div>
     </div>
-    <div class="cell animate__animated cell14">
+    <div class="cell animate__animated cell14" data-index="14">
         <div class="text">14</div>
     </div>
-    <div class="cell animate__animated cell15">
+    <div class="cell animate__animated cell15" data-index="15">
         <div class="text">15</div>
     </div>
-    <div class="cell animate__animated cell16 zero">
-        <div class="text">16</div>
+    <div class="cell animate__animated cell16 unoccupied" data-index="0">
+        <div class="text">0</div>
+    </div>
+
+    <div class="cell animate__animated cell1" data="1">
+        <div class="text1">1</div>
+    </div>
+    <div class="cell animate__animated cell2" data="2">
+        <div class="text2">2</div>
+    </div>
+    <div class="cell animate__animated cell3" data="3">
+        <div class="text3">3</div>
+    </div>
+    <div class="cell animate__animated cell4" data="4">
+        <div class="text4">4</div>
+    </div>
+    <div class="cell animate__animated cell5" data="5">
+        <div class="text5">5</div>
+    </div>
+    <div class="cell animate__animated cell6" data="6">
+        <div class="text6">6</div>
+    </div>
+    <div class="cell animate__animated cell7" data="7">
+        <div class="text7">7</div>
+    </div>
+    <div class="cell animate__animated cell8" data="8">
+        <div class="text8">8</div>
+    </div>
+    <div class="cell animate__animated cell9" data="9">
+        <div class="text9">9</div>
+    </div>
+    <div class="cell animate__animated cell10" data="10">
+        <div class="text10">10</div>
+    </div>
+    <div class="cell animate__animated cell11" data="11">
+        <div class="text11">11</div>
+    </div>
+    <div class="cell animate__animated cell12" data="12">
+        <div class="text12">12</div>
+    </div>
+    <div class="cell animate__animated cell13" data="13">
+        <div class="text13">13</div>
+    </div>
+    <div class="cell animate__animated cell14" data="14">
+        <div class="text14">14</div>
+    </div>
+    <div class="cell animate__animated cell15" data="15">
+        <div class="text15">15</div>
+    </div>
+    <div class="cell animate__animated cell16 unoccupied" data="16">
+        <div class="text16">16</div>
     </div>
 </div>
 <button>Test animation</button>
@@ -156,16 +114,5 @@
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
-<script>
-    $('button').on('click', () => {
-        $('.cell12').addClass(['animate__slideOutDown']);
-        $('.cell16').addClass(['animate__slideOutUp']);
-        setTimeout(() => {
-            const cell = $('.cell12').removeClass(['animate__slideOutDown', 'cell12'])
-            const zero = $('.cell16').removeClass(['animate__slideOutUp', 'cell16'])
-            cell.addClass('cell16')
-            zero.addClass('cell12')
-        }, 1000);
-    })
-</script>
+<script src="/main.js"></script>
 </html>
