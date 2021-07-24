@@ -1,7 +1,10 @@
 const FIELD_WIDTH = 4
-const ANIMATION_DURATION = 1000
+const FIELD_SIZE = 16
+const ANIMATION_DURATION_DEFAULT = 1000 * 0.5
+const ANIMATION_DURATION_FAST = 1000 * 0.1
+const MOVE_ALL_RANDOM_ROUNDS = 50
 
-async function simpleMove (unoccupied, element) {
+async function simpleMove(unoccupied, element, speed) {
     return new Promise((resolve, reject) => {
         const elementOnDom = $('.cell' + element.index)
         elementOnDom.addClass(element.animation)
@@ -17,11 +20,11 @@ async function simpleMove (unoccupied, element) {
                 .addClass('cell' + element.index)
                 .data('index', element.index)
             resolve()
-        }, ANIMATION_DURATION)
+        }, speed)
     })
 }
 
-async function moveDown (unoccupiedIndex, elementIndex) {
+async function moveDown(unoccupiedIndex, elementIndex, speed) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -30,11 +33,12 @@ async function moveDown (unoccupiedIndex, elementIndex) {
         {
             index: elementIndex,
             animation: 'animate__slideOutDown'
-        }
+        },
+        speed
     )
 }
 
-async function moveUp (unoccupiedIndex, elementIndex) {
+async function moveUp(unoccupiedIndex, elementIndex, speed) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -43,11 +47,12 @@ async function moveUp (unoccupiedIndex, elementIndex) {
         {
             index: elementIndex,
             animation: 'animate__slideOutUp'
-        }
+        },
+        speed
     )
 }
 
-async function moveLeft (unoccupiedIndex, elementIndex) {
+async function moveLeft(unoccupiedIndex, elementIndex, speed) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -56,11 +61,12 @@ async function moveLeft (unoccupiedIndex, elementIndex) {
         {
             index: elementIndex,
             animation: 'animate__slideOutLeft'
-        }
+        },
+        speed
     )
 }
 
-async function moveRight (unoccupiedIndex, elementIndex) {
+async function moveRight(unoccupiedIndex, elementIndex, speed) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -69,16 +75,17 @@ async function moveRight (unoccupiedIndex, elementIndex) {
         {
             index: elementIndex,
             animation: 'animate__slideOutRight'
-        }
+        },
+        speed
     )
 }
 
-function whereCanMove (unoccupiedIndex, elementIndex) {
+function whereCanMove(unoccupiedIndex, elementIndex) {
     return unoccupiedIndex - elementIndex
 }
 
-async function makeMove (event) {
-    const element = $(event.currentTarget)
+async function makeMove(selector, speed) {
+    const element = $(selector)
     if (element.hasClass('unoccupied')) {
         return;
     }
@@ -86,24 +93,25 @@ async function makeMove (event) {
     const unoccupiedIndex = $('.unoccupied').data('index')
     switch (whereCanMove(unoccupiedIndex, elementIndex)) {
         case 1:
-            await moveRight(unoccupiedIndex, elementIndex)
+            await moveRight(unoccupiedIndex, elementIndex, speed)
             break;
         case -1:
-            await moveLeft(unoccupiedIndex, elementIndex)
+            await moveLeft(unoccupiedIndex, elementIndex, speed)
             break;
         case FIELD_WIDTH:
-            await moveDown(unoccupiedIndex, elementIndex)
+            await moveDown(unoccupiedIndex, elementIndex, speed)
             break;
         case -1 * FIELD_WIDTH:
-            await moveUp(unoccupiedIndex, elementIndex)
+            await moveUp(unoccupiedIndex, elementIndex, speed)
             break;
     }
-    if (isGameOver()) {
-        gameOver()
+    if (!isGameOver()) {
+        return
     }
+    gameOver()
 }
 
-function isGameOver () {
+function isGameOver() {
     let isElementOnWrongPlace = false
     $('.cell').each((index, element) => {
         if (isElementOnWrongPlace) {
@@ -115,13 +123,70 @@ function isGameOver () {
     return !isElementOnWrongPlace
 }
 
-function newGame () {
-    $('.cell').click(makeMove)
+async function newGame(button) {
+    disableNewGame(button)
+    await moveAllPuzzlesRandom()
+    $('.cell').on('click', async event => await makeMove(event.currentTarget, ANIMATION_DURATION_DEFAULT))
+    enableNewGame(button)
 }
 
-function gameOver () {
+function gameOver() {
     alert('Game over!')
     $('.cell').off('click')
 }
 
-$('#new-game').click(newGame)
+function getRandomFromArray(array, min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return array[Math.floor(Math.random() * (max - min + 1)) + min - 1];
+}
+
+function puzzlesNear(index, previousChosen) {
+    const result = []
+    let amplitudes = [FIELD_WIDTH, -1 * FIELD_WIDTH]
+    amplitudes.forEach(amplitude => {
+        let elementIndex = index - amplitude
+        if (
+            elementIndex > 0 &&
+            elementIndex <= FIELD_SIZE &&
+            elementIndex !== previousChosen
+        ) {
+            result.push(elementIndex)
+        }
+    })
+    amplitudes = [-1, 1]
+    amplitudes.forEach(amplitude => {
+        let elementIndex = index - amplitude
+        if (
+            Math.ceil(elementIndex / FIELD_WIDTH) === Math.ceil(index / FIELD_WIDTH) &&
+            elementIndex !== previousChosen
+        ) {
+            result.push(elementIndex)
+        }
+    })
+    return result
+}
+
+async function moveAllPuzzlesRandom() {
+    let index = MOVE_ALL_RANDOM_ROUNDS;
+    const unoccupied = $('.unoccupied')
+    let unoccupiedIndex = unoccupied.data('index')
+    let previousChosen = 0
+    while(index--) {
+        const puzzles = puzzlesNear(unoccupiedIndex, previousChosen)
+        const chosenElement = getRandomFromArray(puzzles, 1, puzzles.length)
+        await makeMove('.cell' + chosenElement, ANIMATION_DURATION_FAST)
+        previousChosen = unoccupiedIndex
+        unoccupiedIndex = unoccupied.data('index')
+    }
+}
+
+function disableNewGame(button) {
+    button.off('click')
+}
+
+function enableNewGame(button) {
+    button.on('click', event => newGame(button))
+}
+
+enableNewGame($('#new-game'))

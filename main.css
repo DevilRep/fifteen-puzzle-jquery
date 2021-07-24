@@ -22,6 +22,14 @@ body {
     cursor: pointer;
 }
 
+.animate__animated {
+    --animate-duration: 0.5s;
+}
+
+.animate__fast {
+    --animate-duration: 0.1s;
+}
+
 .cell1 {
     order: 1;
 }
