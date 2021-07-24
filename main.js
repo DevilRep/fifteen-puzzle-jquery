@@ -1,24 +1,27 @@
 const FIELD_WIDTH = 4
 const ANIMATION_DURATION = 1000
 
-function simpleMove (unoccupied, element) {
-    const elementOnDom = $('.cell' + element.index)
-    elementOnDom.addClass(element.animation)
-    const unoccupiedElement = $('.unoccupied')
-    unoccupiedElement.addClass(unoccupied.animation)
-    setTimeout(() => {
-        elementOnDom
-            .removeClass([element.animation, 'cell' + element.index])
-            .addClass('cell' + unoccupied.index)
-            .data('index', unoccupied.index)
-        unoccupiedElement
-            .removeClass([unoccupied.animation, 'cell' + unoccupied.index])
-            .addClass('cell' + element.index)
-            .data('index', element.index)
-    }, ANIMATION_DURATION)
+async function simpleMove (unoccupied, element) {
+    return new Promise((resolve, reject) => {
+        const elementOnDom = $('.cell' + element.index)
+        elementOnDom.addClass(element.animation)
+        const unoccupiedElement = $('.unoccupied')
+        unoccupiedElement.addClass(unoccupied.animation)
+        setTimeout(() => {
+            elementOnDom
+                .removeClass([element.animation, 'cell' + element.index])
+                .addClass('cell' + unoccupied.index)
+                .data('index', unoccupied.index)
+            unoccupiedElement
+                .removeClass([unoccupied.animation, 'cell' + unoccupied.index])
+                .addClass('cell' + element.index)
+                .data('index', element.index)
+            resolve()
+        }, ANIMATION_DURATION)
+    })
 }
 
-function moveDown (unoccupiedIndex, elementIndex) {
+async function moveDown (unoccupiedIndex, elementIndex) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -31,7 +34,7 @@ function moveDown (unoccupiedIndex, elementIndex) {
     )
 }
 
-function moveUp (unoccupiedIndex, elementIndex) {
+async function moveUp (unoccupiedIndex, elementIndex) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -44,7 +47,7 @@ function moveUp (unoccupiedIndex, elementIndex) {
     )
 }
 
-function moveLeft (unoccupiedIndex, elementIndex) {
+async function moveLeft (unoccupiedIndex, elementIndex) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -57,7 +60,7 @@ function moveLeft (unoccupiedIndex, elementIndex) {
     )
 }
 
-function moveRight (unoccupiedIndex, elementIndex) {
+async function moveRight (unoccupiedIndex, elementIndex) {
     return simpleMove(
         {
             index: unoccupiedIndex,
@@ -74,7 +77,7 @@ function whereCanMove (unoccupiedIndex, elementIndex) {
     return unoccupiedIndex - elementIndex
 }
 
-function makeMove (event) {
+async function makeMove (event) {
     const element = $(event.currentTarget)
     if (element.hasClass('unoccupied')) {
         return;
@@ -83,23 +86,21 @@ function makeMove (event) {
     const unoccupiedIndex = $('.unoccupied').data('index')
     switch (whereCanMove(unoccupiedIndex, elementIndex)) {
         case 1:
-            moveRight(unoccupiedIndex, elementIndex)
+            await moveRight(unoccupiedIndex, elementIndex)
             break;
         case -1:
-            moveLeft(unoccupiedIndex, elementIndex)
+            await moveLeft(unoccupiedIndex, elementIndex)
             break;
         case FIELD_WIDTH:
-            moveDown(unoccupiedIndex, elementIndex)
+            await moveDown(unoccupiedIndex, elementIndex)
             break;
         case -1 * FIELD_WIDTH:
-            moveUp(unoccupiedIndex, elementIndex)
+            await moveUp(unoccupiedIndex, elementIndex)
             break;
     }
-    setTimeout(() => {
-        if (isGameOver()) {
-            gameOver()
-        }
-    }, 1100)
+    if (isGameOver()) {
+        gameOver()
+    }
 }
 
 function isGameOver () {
