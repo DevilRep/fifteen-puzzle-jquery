@@ -1,4 +1,3 @@
-const FIELD_SIZE = 16
 const FIELD_WIDTH = 4
 const ANIMATION_DURATION = 1000
 
@@ -96,6 +95,32 @@ function makeMove (event) {
             moveUp(unoccupiedIndex, elementIndex)
             break;
     }
+    setTimeout(() => {
+        if (isGameOver()) {
+            gameOver()
+        }
+    }, 1100)
 }
 
-$('.cell').on('click', makeMove)
+function isGameOver () {
+    let isElementOnWrongPlace = false
+    $('.cell').each((index, element) => {
+        if (isElementOnWrongPlace) {
+            return
+        }
+        element = $(element)
+        isElementOnWrongPlace = !element.hasClass('cell' + element.attr('data-index'))
+    })
+    return !isElementOnWrongPlace
+}
+
+function newGame () {
+    $('.cell').click(makeMove)
+}
+
+function gameOver () {
+    alert('Game over!')
+    $('.cell').off('click')
+}
+
+$('#new-game').click(newGame)
