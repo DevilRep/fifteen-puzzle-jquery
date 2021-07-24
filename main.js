@@ -108,7 +108,7 @@ async function makeMove(selector, speed) {
     if (!isGameOver()) {
         return
     }
-    gameOver()
+    win()
 }
 
 function isGameOver() {
@@ -130,8 +130,8 @@ async function newGame(button) {
     enableNewGame(button)
 }
 
-function gameOver() {
-    alert('Game over!')
+function win() {
+    alert('Congratulations! You won!')
     $('.cell').off('click')
 }
 
