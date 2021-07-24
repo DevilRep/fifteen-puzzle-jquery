@@ -19,6 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .cell1 {
@@ -87,4 +88,5 @@ body {
 
 .unoccupied {
     opacity: 0;
+    cursor: default;
 }

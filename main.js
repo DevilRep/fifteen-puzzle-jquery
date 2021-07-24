@@ -5,13 +5,14 @@ const ANIMATION_DURATION = 1000
 function simpleMove (unoccupied, element) {
     const elementOnDom = $('.cell' + element.index)
     elementOnDom.addClass(element.animation)
-    unoccupied.addClass(unoccupied.animation)
+    const unoccupiedElement = $('.unoccupied')
+    unoccupiedElement.addClass(unoccupied.animation)
     setTimeout(() => {
         elementOnDom
             .removeClass([element.animation, 'cell' + element.index])
             .addClass('cell' + unoccupied.index)
             .data('index', unoccupied.index)
-        unoccupied
+        unoccupiedElement
             .removeClass([unoccupied.animation, 'cell' + unoccupied.index])
             .addClass('cell' + element.index)
             .data('index', element.index)
@@ -75,7 +76,7 @@ function whereCanMove (unoccupiedIndex, elementIndex) {
 }
 
 function makeMove (event) {
-    const element = $(event.target)
+    const element = $(event.currentTarget)
     if (element.hasClass('unoccupied')) {
         return;
     }
