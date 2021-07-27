@@ -189,4 +189,4 @@ function enableNewGame(button) {
     button.on('click', event => newGame(button))
 }
 
-enableNewGame($('#new-game'))
+enableNewGame($('.new-game'))

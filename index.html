@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
-    <link 
+    <title>Fifteen Puzzle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<div class="wrapper">
-    <div class="cell animate__animated cell1" data-index="1">
-        <div class="text">1</div>
+<nav>
+    <div class="nav-wrapper">
+        <a class="brand-logo new-game center">Fifteen puzzle</a>
     </div>
-    <div class="cell animate__animated cell2" data-index="2">
-        <div class="text">2</div>
-    </div>
-    <div class="cell animate__animated cell3" data-index="3">
-        <div class="text">3</div>
-    </div>
-    <div class="cell animate__animated cell4" data-index="4">
-        <div class="text">4</div>
-    </div>
-    <div class="cell animate__animated cell5" data-index="5">
-        <div class="text">5</div>
-    </div>
-    <div class="cell animate__animated cell6" data-index="6">
-        <div class="text">6</div>
-    </div>
-    <div class="cell animate__animated cell7" data-index="7">
-        <div class="text">7</div>
-    </div>
-    <div class="cell animate__animated cell8" data-index="8">
-        <div class="text">8</div>
-    </div>
-    <div class="cell animate__animated cell9" data-index="9">
-        <div class="text">9</div>
-    </div>
-    <div class="cell animate__animated cell10" data-index="10">
-        <div class="text">10</div>
-    </div>
-    <div class="cell animate__animated cell11" data-index="11">
-        <div class="text">11</div>
-    </div>
-    <div class="cell animate__animated cell12" data-index="12">
-        <div class="text">12</div>
-    </div>
-    <div class="cell animate__animated cell13" data-index="13">
-        <div class="text">13</div>
-    </div>
-    <div class="cell animate__animated cell14" data-index="14">
-        <div class="text">14</div>
-    </div>
-    <div class="cell animate__animated cell15" data-index="15">
-        <div class="text">15</div>
-    </div>
-    <div class="cell animate__animated cell16 unoccupied" data-index="16">
-        <div class="text">0</div>
+</nav>
+<div class="content">
+    <div class="field card-panel">
+        <div class="cell animate__animated cell1" data-index="1">
+            <div class="text">1</div>
+        </div>
+        <div class="cell animate__animated cell2" data-index="2">
+            <div class="text">2</div>
+        </div>
+        <div class="cell animate__animated cell3" data-index="3">
+            <div class="text">3</div>
+        </div>
+        <div class="cell animate__animated cell4" data-index="4">
+            <div class="text">4</div>
+        </div>
+        <div class="cell animate__animated cell5" data-index="5">
+            <div class="text">5</div>
+        </div>
+        <div class="cell animate__animated cell6" data-index="6">
+            <div class="text">6</div>
+        </div>
+        <div class="cell animate__animated cell7" data-index="7">
+            <div class="text">7</div>
+        </div>
+        <div class="cell animate__animated cell8" data-index="8">
+            <div class="text">8</div>
+        </div>
+        <div class="cell animate__animated cell9" data-index="9">
+            <div class="text">9</div>
+        </div>
+        <div class="cell animate__animated cell10" data-index="10">
+            <div class="text">10</div>
+        </div>
+        <div class="cell animate__animated cell11" data-index="11">
+            <div class="text">11</div>
+        </div>
+        <div class="cell animate__animated cell12" data-index="12">
+            <div class="text">12</div>
+        </div>
+        <div class="cell animate__animated cell13" data-index="13">
+            <div class="text">13</div>
+        </div>
+        <div class="cell animate__animated cell14" data-index="14">
+            <div class="text">14</div>
+        </div>
+        <div class="cell animate__animated cell15" data-index="15">
+            <div class="text">15</div>
+        </div>
+        <div class="cell animate__animated cell16 unoccupied" data-index="16">
+            <div class="text">0</div>
+        </div>
     </div>
 </div>
-<button id="new-game">New game</button>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

@@ -1,25 +1,37 @@
-body {
+.content {
     height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.wrapper {
+
+.field {
     width: 500px;
     height: 500px;
     background-color: green;
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
 }
 
 .cell {
     font-size: xxx-large;
-    width: 125px;
+    width: 123px;
     background-color: orange;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    margin: 1px;
+    -webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
 .animate__animated {
@@ -97,4 +109,8 @@ body {
 .unoccupied {
     opacity: 0;
     cursor: default;
+}
+
+.new-game {
+    cursor: pointer;
 }
