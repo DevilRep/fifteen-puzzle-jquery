@@ -24,6 +24,7 @@ This project was created to test a new technologies, try different solutions for
 ## Technologies Used
 - jquery - version 3.6.0
 - animate - version 4.1.1
+- materialize - version 1.0.0
 
 
 <!-- ## Features
