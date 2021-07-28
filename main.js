@@ -127,12 +127,14 @@ async function newGame(button) {
     disableNewGame(button)
     await moveAllPuzzlesRandom()
     $('.cell').on('click', async event => await makeMove(event.currentTarget, ANIMATION_DURATION_DEFAULT))
+    $('.field').addClass('in-game')
     enableNewGame(button)
 }
 
 function win() {
     alert('Congratulations! You won!')
     $('.cell').off('click')
+    $('.field').removeClass('in-game')
 }
 
 function getRandomFromArray(array, min, max) {

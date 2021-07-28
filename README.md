@@ -20,6 +20,7 @@ Rules can be found [_here_](https://en.wikipedia.org/wiki/15_puzzle)
 ## General Information
 This project was created to test a new technologies, try different solutions for the same tack
 
+To start the game just click on the "Fifteen puzzle" on the top
 
 ## Technologies Used
 - jquery - version 3.6.0
