@@ -1,3 +1,15 @@
+body {
+    background-color: #F5FEC0;
+}
+
+nav {
+    background-color: #60A9A6;
+}
+
+nav .brand-logo {
+    color: #F5FEC0;
+}
+
 .content {
     height: 800px;
     display: flex;
@@ -8,7 +20,7 @@
 .field {
     width: 500px;
     height: 500px;
-    background-color: green;
+    background-color: #60A9A6;
     display: flex;
     flex-wrap: wrap;
     padding: 0;
@@ -19,7 +31,8 @@
 .cell {
     font-size: xxx-large;
     width: 123px;
-    background-color: orange;
+    color: #60A9A6;
+    background-color: #CAF2D7;
     display: flex;
     justify-content: center;
     align-items: center;
