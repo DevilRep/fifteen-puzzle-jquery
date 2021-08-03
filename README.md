@@ -13,7 +13,7 @@ Rules can be found [_here_](https://en.wikipedia.org/wiki/15_puzzle)
 
 
 ## General Information
-This project was created to test a new technologies, try different solutions for the same tack
+This project was created to test a new technologies, try different solutions and implementations
 
 
 ## Technologies Used
